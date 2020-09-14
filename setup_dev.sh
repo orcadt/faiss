@@ -11,12 +11,11 @@ if [ "$(expr substr $(uname -s) 1 5)" != "Linux" ]; then
     unset RUN_SUDO
 fi
 
-if [ ! -f ${PWD}/faiss/libfaiss.a ]; then
-    echo libfaiss.a not exists, build faiss first !
-    exit 1
-fi
-
 if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+    if [ ! -f ${PWD}/faiss/libfaiss.a ]; then
+        echo libfaiss.a not exists, build faiss first !
+        exit 1
+    fi
     eval $RUN_SUDO cp -f ${PWD}/faiss/libfaiss.a /usr/local/lib/libfaiss.a
     eval $RUN_SUDO ldconfig
 fi
