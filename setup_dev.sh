@@ -20,5 +20,7 @@ if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     eval $RUN_SUDO ldconfig
 fi
 
-eval $RUN_SUDO rm -r /usr/include/faiss
+if [ -L "/usr/include/faiss" ]; then
+    eval $RUN_SUDO rm -r /usr/include/faiss
+fi
 eval $RUN_SUDO ln -s ${PWD}/faiss /usr/include/faiss
