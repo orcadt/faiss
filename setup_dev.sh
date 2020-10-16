@@ -9,6 +9,11 @@ fi
 
 if [ "$(expr substr $(uname -s) 1 5)" != "Linux" ]; then
     unset RUN_SUDO
+else
+    user=$(env | grep USER | cut -d "=" -f 2)
+    if [ "$user" == "root"  ]; then
+        unset RUN_SUDO
+    fi
 fi
 
 if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
