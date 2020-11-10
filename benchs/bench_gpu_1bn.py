@@ -198,6 +198,7 @@ print("Preparing dataset", dbname)
 
 if dbname.startswith('SIFT'):
     # SIFT1M to SIFT1000M
+    # get number in dbname, from 5th (4) char, not include the last char (-1)
     dbsize = int(dbname[4:-1])
     xb = mmap_bvecs('bigann/bigann_base.bvecs')
     xq = mmap_bvecs('bigann/bigann_query.bvecs')
